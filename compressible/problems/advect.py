@@ -31,6 +31,8 @@ def init_data(my_data, rp):
     ymom[:,:] = 0.0
 
     r_init = rp.get_param("advect.r_init")
+    u = rp.get_param("advect.u")
+    v = rp.get_param("advect.v")
 
     gamma = rp.get_param("eos.gamma")
     pi = math.pi
@@ -58,8 +60,8 @@ def init_data(my_data, rp):
     rhoe = pres[:,:]/(gamma - 1.0)
 
     # velocity
-    xmom[:,:] = 0.5*dens[:,:]
-    ymom[:,:] = 0.5*dens[:,:]
+    xmom[:,:] = dens[:,:]*u
+    ymom[:,:] = dens[:,:]*v
     
     ener[:,:] = rhoe + 0.5*(xmom**2 + ymom**2)/dens
 

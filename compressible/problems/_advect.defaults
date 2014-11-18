@@ -1,3 +1,5 @@
 [advect]
 r_init = 0.1   ; radius for the initial perturbation
+u = 1.0
+v = 0.2
 
