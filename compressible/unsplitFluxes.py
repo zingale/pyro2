@@ -221,23 +221,40 @@ def unsplitFluxes(my_data, rp, vars, tc, dt):
     tm_limit.begin()
 
     limiter = rp.get_param("compressible.limiter")
-    if limiter == 0:
-        limitFunc = reconstruction_f.nolimit
-    elif limiter == 1:
-        limitFunc = reconstruction_f.limit2
-    else:
-        limitFunc = reconstruction_f.limit4
+    if limiter > 0:
+        if limiter == 0:
+            limitFunc = reconstruction_f.nolimit
+        elif limiter == 1:
+            limitFunc = reconstruction_f.limit2
+        else:
+            limitFunc = reconstruction_f.limit4
     
-    ldelta_rx = xi*limitFunc(1, r, myg.qx, myg.qy, myg.ng)
-    ldelta_ux = xi*limitFunc(1, u, myg.qx, myg.qy, myg.ng)
-    ldelta_vx = xi*limitFunc(1, v, myg.qx, myg.qy, myg.ng)
-    ldelta_px = xi*limitFunc(1, p, myg.qx, myg.qy, myg.ng)
+        ldelta_rx = xi*limitFunc(1, r, myg.qx, myg.qy, myg.ng)
+        ldelta_ux = xi*limitFunc(1, u, myg.qx, myg.qy, myg.ng)
+        ldelta_vx = xi*limitFunc(1, v, myg.qx, myg.qy, myg.ng)
+        ldelta_px = xi*limitFunc(1, p, myg.qx, myg.qy, myg.ng)
 
-    # monotonized central differences in y-direction
-    ldelta_ry = xi*limitFunc(2, r, myg.qx, myg.qy, myg.ng)
-    ldelta_uy = xi*limitFunc(2, u, myg.qx, myg.qy, myg.ng)
-    ldelta_vy = xi*limitFunc(2, v, myg.qx, myg.qy, myg.ng)
-    ldelta_py = xi*limitFunc(2, p, myg.qx, myg.qy, myg.ng)
+        # monotonized central differences in y-direction
+        ldelta_ry = xi*limitFunc(2, r, myg.qx, myg.qy, myg.ng)
+        ldelta_uy = xi*limitFunc(2, u, myg.qx, myg.qy, myg.ng)
+        ldelta_vy = xi*limitFunc(2, v, myg.qx, myg.qy, myg.ng)
+        ldelta_py = xi*limitFunc(2, p, myg.qx, myg.qy, myg.ng)
+
+    else:
+        ldelta_rx, ldelta_ry = interface_f.multid_limit(myg.qx, myg.qy, myg.ng, myg.dx, myg.dy, r)
+        ldelta_ux, ldelta_uy = interface_f.multid_limit(myg.qx, myg.qy, myg.ng, myg.dx, myg.dy, u)
+        ldelta_vx, ldelta_vy = interface_f.multid_limit(myg.qx, myg.qy, myg.ng, myg.dx, myg.dy, v)
+        ldelta_px, ldelta_py = interface_f.multid_limit(myg.qx, myg.qy, myg.ng, myg.dx, myg.dy, p)
+
+        ldelta_rx = xi*ldelta_rx
+        ldelta_ux = xi*ldelta_ux
+        ldelta_vx = xi*ldelta_vx
+        ldelta_px = xi*ldelta_px
+
+        ldelta_ry = xi*ldelta_ry
+        ldelta_uy = xi*ldelta_uy
+        ldelta_vy = xi*ldelta_vy
+        ldelta_py = xi*ldelta_py
 
     tm_limit.end()
 
