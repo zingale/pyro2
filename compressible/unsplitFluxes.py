@@ -221,7 +221,7 @@ def unsplitFluxes(my_data, rp, vars, tc, dt):
     tm_limit.begin()
 
     limiter = rp.get_param("compressible.limiter")
-    if limiter > 0:
+    if limiter >= 0:
         if limiter == 0:
             limitFunc = reconstruction_f.nolimit
         elif limiter == 1:
