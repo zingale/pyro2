@@ -43,7 +43,7 @@ class Pyro(object):
             Name of solver to use
         """
 
-        msg.bold('pyro ...')
+        msg.bold('pyro testing ...')
 
         if solver_name not in valid_solvers:
             msg.fail("ERROR: %s is not a valid solver" % solver_name)
