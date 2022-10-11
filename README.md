@@ -1,7 +1,12 @@
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) 
-[![pytest-all](https://github.com/python-hydro/pyro2/actions/workflows/pytest-flake8.yml/badge.svg)](https://github.com/python-hydro/pyro2/actions/workflows/pytest-flake8.yml)
+[![pylint](https://github.com/python-hydro/pyro2/actions/workflows/pylint.yml/badge.svg)](https://github.com/python-hydro/pyro2/actions/workflows/pylint.yml)
+[![flake8](https://github.com/python-hydro/pyro2/actions/workflows/flake8.yml/badge.svg)](https://github.com/python-hydro/pyro2/actions/workflows/flake8.yml)
+[![pytest-all](https://github.com/python-hydro/pyro2/actions/workflows/pytest.yml/badge.svg)](https://github.com/python-hydro/pyro2/actions/workflows/pytest.yml)
+
 [![Documentation Status](https://readthedocs.org/projects/pyro2/badge/?version=latest)](https://pyro2.readthedocs.io/en/latest/?badge=latest) 
+
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/python-hydro/pyro2/main?filepath=examples%2Fexamples.ipynb) 
+
 [![JOSS status](http://joss.theoj.org/papers/6d8b2f94e6d08a7b5d65e98a948dcad7/status.svg)](http://joss.theoj.org/papers/6d8b2f94e6d08a7b5d65e98a948dcad7) 
 [![DOI](https://zenodo.org/badge/20570861.svg)](https://zenodo.org/badge/latestdoi/20570861)
 
@@ -38,25 +43,19 @@ https://pyro2.readthedocs.io/
  * [Working with data](#working-with-data)
  * [Understanding the algorithms](#understanding-the-algorithms)
  * [Regression and unit testing](#regression-and-unit-testing)
- * [python 2.7](#python-27)
  * [Acknowledgements](#acknowledgements)
  * [Getting help](#getting-help)
 
 
 ## Getting started
 
-  - By default, we assume python 3.4 or later.  Instructions to
-    run with python 2.7 are given below, but it is recommended you
-	switch to python 3.x
+  - By default, we assume python 3.6 or later.
 
   - There are a few steps to take to get things running. You need to
     make sure you have `numpy`, `numba`, `matplotlib`, and `h5py`
     installed. On a Fedora system, this can be accomplished by doing:
 
        `dnf install python3-numpy python3-numba python3-matplotlib python3-matplotlib-tk python3-h5py`
-
-    (note, for older Fedora releases, replace `dnf` with `yum`.  For
-	python 2.x, leave off the `3` in the package names.)
 
   - Not all matplotlib backends allow for the interactive plotting as
     pyro is run. One that does is the TkAgg backend. This can be made
@@ -255,22 +254,6 @@ with their data.
   Tests are run nightly and reported here:
 
   http://bender.astro.sunysb.edu/hydro_by_example/download/_stage/pyro2/tests.out
-
-
-## python 2.7
-
-  To run with python 2.7, you need to build the compiled code as:
-
-  ```
-  PYTHON=python2 ./mk.sh
-  ```
-
-  and then run explicitly giving the name of the python interpreter
-  on the commandline as, for example:
-
-  ```
-  python2 ./pyro.py compressible sedov inputs.sedov
-  ```
 
 
 ## Acknowledgements
