@@ -65,7 +65,7 @@ The parameter for this solver are:
 
 :py:mod:`compressible_sdc` uses a 4th order accurate method with
 spectral-deferred correction (SDC) for the time integration.  This
-shares much in common with the ``compressible_fv4`` solver, aside from
+shares much in common with the :py:mod:`compressible_fv4` solver, aside from
 how the time-integration is handled.
 
 The parameters for this solver are:
@@ -78,7 +78,7 @@ Example problems
 
 .. note::
 
-   The 4th-order accurate solver (``compressible_fv4``) requires that
+   The 4th-order accurate solver (:py:mod:`compressible_fv4`) requires that
    the initialization create cell-averages accurate to 4th-order.  To
    allow for all the solvers to use the same problem setups, we assume
    that the initialization routines initialize cell-centers (which is
@@ -181,7 +181,7 @@ escape the domain. It is run as:
 
 .. code-block:: none
 
-   ./pyro.py compressible er inputs.rt
+   ./pyro.py compressible rt inputs.rt
 
 .. raw:: html
 

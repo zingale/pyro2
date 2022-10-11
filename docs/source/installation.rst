@@ -14,11 +14,15 @@ The following python packages are required:
 * ``numpy``
 * ``matplotlib``
 * ``numba``
+* ``h5py``
 * ``pytest`` (for unit tests)
 
 The following steps are needed before running pyro:
 
-* add ``pyro/`` to your ``PYTHONPATH`` environment variable.  For
+* add ``pyro/`` to your ``PYTHONPATH`` environment variable (note this is only
+needed if you wish to use pyro as a python
+module - this step is not necessary if you only run pyro via the
+commandline using the ``pyro.py`` script).  For
   the bash shell, this is done as:
 
     .. code-block:: none
@@ -26,7 +30,7 @@ The following steps are needed before running pyro:
        export PYTHONPATH="/path/to/pyro/:${PYTHONPATH}"
 
 * define the environment variable ``PYRO_HOME`` to point to
-  the ``pyro2/`` directory
+  the ``pyro2/`` directory (only needed for regression testing)
 
     .. code-block:: none
 

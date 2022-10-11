@@ -45,6 +45,9 @@ extensions = ['sphinx.ext.autodoc',
     'IPython.sphinxext.ipython_console_highlighting',
     'sphinx.ext.githubpages']
 
+# bibtex
+bibtex_bibfiles = ["refs.bib"]
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -57,7 +60,7 @@ source_suffix = '.rst'
 # see https://github.com/phn/pytpm/issues/3#issuecomment-12133978
 numpydoc_show_class_members = False
 
-# The master toctree document.
+# The main toctree document.
 master_doc = 'index'
 
 # General information about the project.

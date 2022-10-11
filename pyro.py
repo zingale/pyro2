@@ -21,6 +21,7 @@ valid_solvers = ["advection",
                  "compressible_fv4",
                  "compressible_sdc",
                  "compressible_react",
+                 "compressible_sr",
                  "diffusion",
                  "incompressible",
                  "lm_atm",
@@ -224,7 +225,7 @@ class Pyro(object):
             s += "Simulation step number = {}\n".format(self.sim.n)
         s += "\nRuntime Parameters"
         s += "\n------------------\n"
-        s += str(self.sim.rp)
+        s += str(self.rp)
         return s
 
     def get_var(self, v):
@@ -267,7 +268,7 @@ class PyroBenchmark(Pyro):
         self.reset_bench_on_fail = reset_bench_on_fail
         self.make_bench = make_bench
 
-    def run_sim(self, rtol):
+    def run_sim(self, rtol=1.e-12):
         """
         Evolve entire simulation and compare to benchmark at the end.
         """

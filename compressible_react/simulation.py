@@ -1,5 +1,10 @@
 from __future__ import print_function
 
+import matplotlib
+try:
+    matplotlib.rcParams['mpl_toolkits.legacy_colorbar'] = False
+except KeyError:
+    pass
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -111,6 +116,7 @@ class Simulation(compressible.Simulation):
 
             # needed for PDF rendering
             cb = axes.cbar_axes[n].colorbar(img)
+            cb.formatter = matplotlib.ticker.FormatStrFormatter("")
             cb.solids.set_rasterized(True)
             cb.solids.set_edgecolor("face")
 

@@ -54,15 +54,16 @@ an interface that enables simulations to be set up and run in a Jupyter notebook
 ``examples/examples.ipynb`` for an example notebook. A simulation can be set up and run
 by carrying out the following steps:
 
-* create a ``Pyro`` object, initializing it with a specific solver
+* create a :func:`Pyro <pyro.Pyro>` object, initializing it with a specific solver
 * initialize the problem, passing in runtime parameters and inputs
 * run the simulation
 
-For example, if we wished to use the ``compressible`` solver to run the
+For example, if we wished to use the :mod:`compressible <compressible>` solver to run the
 Kelvin-Helmholtz problem ``kh``, we would do the following:
 
 .. code-block:: python
 
+    from pyro import Pyro
     pyro = Pyro("compressible")
     pyro.initialize_problem(problem_name="kh",
                             inputs_file="inputs.kh")

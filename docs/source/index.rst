@@ -1,4 +1,4 @@
-.. pyro documentation master file, created by
+.. pyro documentation main file, created by
    sphinx-quickstart on Mon Dec 25 18:42:54 2017.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -32,6 +32,7 @@ pyro: a python hydro code
    advection_basics
    compressible_basics
    compressible_compare
+   compressible_sr_basics
    multigrid_basics
    multigrid-examples.ipynb
    diffusion_basics

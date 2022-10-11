@@ -48,10 +48,12 @@ from __future__ import print_function
 import os
 import re
 from util import msg
-
+import textwrap
 
 # some utility functions to automagically determine what the data
 # types are
+
+
 def is_int(string):
     """ is the given string an interger? """
     try:
@@ -316,8 +318,15 @@ class RuntimeParameters(object):
 
             for key in keys:
                 _, option = key.split('.')
+                descr = textwrap.wrap(self.param_comments[key].strip(), 50)
+                if len(descr) == 0:
+                    descr = [" "]
+
                 f.write(entry.format(option, "``{}``".format(str(self.params[key]).strip()),
-                                     self.param_comments[key].strip()))
+                                     descr[0]))
+                if len(descr) > 1:
+                    for line in descr[1:]:
+                        f.write(entry.format("", "", line))
                 f.write(separator)
 
             f.write("\n")
